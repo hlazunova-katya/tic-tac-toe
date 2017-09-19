@@ -1,7 +1,7 @@
 class TicTacToe {
     constructor() {
         this.cur_player = 'x';
-        this.field = [[null,null,null],[null,null,null],[null,null,null] ];
+        this.field = [[null,null,null],[null,null,null],[null,null,null]];
     }
 
     getCurrentPlayerSymbol() {
@@ -11,17 +11,16 @@ class TicTacToe {
     nextTurn(rowIndex, columnIndex) {
         if (this.field[rowIndex][columnIndex]===null){
             this.field[rowIndex][columnIndex]=this.cur_player;
-            //this.cur_player === 'x' ? this.cur_player = 'o' : this.cur_player = 'x';
             this.cur_player = (this.cur_player === 'x') ? 'o' : 'x';
         }
     }
 
     isFinished() {
-       if (this.isDraw()||this.getWinner()!==null) return true;
-       else return false;
+       return this.isDraw()||this.getWinner()!==null;
     }
 
     getWinner() {
+        //проверка вертикалей и горизонталей
         for (let i=0; i<3; i++){
             if (
                 this.field[i][0]!==null
